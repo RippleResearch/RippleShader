@@ -6,9 +6,9 @@ public class CollisionScript : MonoBehaviour {
 	public float distanceX, distanceZ;
 	public float[] waveAmplitude;
 	public float magnitudeDivider;
-	// public Vector2[] impactPos;
-	// public float[] distance;
-	// public float speedWaveSpread;
+	public Vector2[] impactPos;
+	public float[] distance;
+	public float speedWaveSpread;
 	
 
 	Mesh mesh;
@@ -25,14 +25,14 @@ public class CollisionScript : MonoBehaviour {
 			// print("Float" + GetComponent<Renderer>().material.GetFloat("_WaveAmplitude1"));
 			if (waveAmplitude[i] > 0)
 			{
-				// distance[i] += speedWaveSpread;
-				// GetComponent<Renderer>().material.SetFloat("_Distance" + (i+1), distance[i]);
+				distance[i] += speedWaveSpread;
+				GetComponent<Renderer>().material.SetFloat("_Distance" + (i+1), distance[i]);
 				GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + (i+1), waveAmplitude[i] * 0.98f); // Decreases the wave amplitude by 2% every time it updates so it keeps getting smaller
 			}
 			if (waveAmplitude[i] < 0.01) // If the wave is pretty small, just set it to 0
 			{
 				GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + (i+1), 0);
-				// distance[i] = 0;
+				distance[i] = 0;
 			}
 
 		}
@@ -46,26 +46,24 @@ public class CollisionScript : MonoBehaviour {
 				waveNumber = 1;
 			}
 			waveAmplitude[waveNumber-1] = 0;
-			// distance[waveNumber-1] = 0;
-
+			distance[waveNumber-1] = 0;
+			// Distance in the realspace of the object that hits the plane
 			distanceX = this.transform.position.x - col.gameObject.transform.position.x;
+						//distance of this object   something?? not exactly sure what this does
 			distanceZ = this.transform.position.z - col.gameObject.transform.position.z;
-
+			
 			GetComponent<Renderer>().material.SetFloat("_OffsetX" + waveNumber, distanceX / mesh.bounds.size.x * 2.5f);
-			GetComponent<Renderer>().material.SetFloat("_OffsetZ" + waveNumber, distanceX / mesh.bounds.size.z * 2.5f);
+			GetComponent<Renderer>().material.SetFloat("_OffsetZ" + waveNumber, distanceZ / mesh.bounds.size.z * 2.5f);
 
 			GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + waveNumber, col.rigidbody.velocity.magnitude * magnitudeDivider);
 
-			// impactPos[waveNumber - 1].x = col.transform.position.x;
-			// impactPos[waveNumber - 1].y = col.transform.position.z;
+			impactPos[waveNumber - 1].x = col.transform.position.x;
+			impactPos[waveNumber - 1].y = col.transform.position.z;
 
-			// GetComponent<Renderer>().material.SetFloat("_xImpact" + waveNumber, col.transform.position.x);
-			// GetComponent<Renderer>().material.SetFloat("_zImpact" + waveNumber, col.transform.position.z);
+			GetComponent<Renderer>().material.SetFloat("_xImpact" + waveNumber, col.transform.position.x);
+			GetComponent<Renderer>().material.SetFloat("_zImpact" + waveNumber, col.transform.position.z);
 
-			// GetComponent<Renderer>().material.SetFloat("_OffsetX" + waveNumber, distanceX / mesh.bounds.size.x * 2.5f);
-			// GetComponent<Renderer>().material.SetFloat("_OffsetZ" + waveNumber, distanceZ / mesh.bounds.size.z * 2.5f);
-
-			// GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + waveNumber, col.rigidbody.velocity.magnitude * magnitudeDivider);
+			GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + waveNumber, col.rigidbody.velocity.magnitude * magnitudeDivider);
 
 		}
 	}

@@ -20,14 +20,53 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Distance1: 0
+    - _Distance2: 0
+    - _Distance3: 0
+    - _Distance4: 0
+    - _Distance5: 0
+    - _Distance6: 0
+    - _Distance7: 0
+    - _Distance8: 0
+    - _Frequency: 1
     - _Glossiness: 0.5
     - _Metallic: 0
+    - _Scale: 1
+    - _Speed: 1
+    - _WaveAmplitude1: 0
+    - _WaveAmplitude2: 0
+    - _WaveAmplitude3: 0
+    - _WaveAmplitude4: 0
+    - _WaveAmplitude5: 0
+    - _WaveAmplitude6: 0
+    - _WaveAmplitude7: 0
+    - _WaveAmplitude8: 0
+    - _xImpact1: 0
+    - _xImpact2: 0
+    - _xImpact3: 0
+    - _xImpact4: 0
+    - _xImpact5: 0
+    - _xImpact6: 0
+    - _xImpact7: 0
+    - _xImpact8: 0
+    - _zImpact1: 0
+    - _zImpact2: 0
+    - _zImpact3: 0
+    - _zImpact4: 0
+    - _zImpact5: 0
+    - _zImpact6: 0
+    - _zImpact7: 0
+    - _zImpact8: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

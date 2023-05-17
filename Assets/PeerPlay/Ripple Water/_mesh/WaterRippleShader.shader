@@ -16,6 +16,8 @@ Shader "Custom/WaterRippleShader"
         LOD 200
 
         CGPROGRAM
+// Upgrade NOTE: excluded shader from DX11 because it uses wrong array syntax (type[size] name)
+#pragma exclude_renderers d3d11
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows vertex:vert
 
@@ -24,6 +26,8 @@ Shader "Custom/WaterRippleShader"
 
         sampler2D _MainTex;
         float _Scale, _Speed, _Frequency;
+        float _WaveAmplitude1, _WaveAmplitude2, _WaveAmplitude3, _WaveAmplitude4, _WaveAmplitude5, _WaveAmplitude6, _WaveAmplitude7, _WaveAmplitude8;
+        float _OffsetX1, _OffsetZ1, _OffsetX2, _OffsetZ2, _OffsetX3, _OffsetZ3, _OffsetX4, _OffsetZ4, _OffsetX5, _OffsetZ5, _OffsetX6, _OffsetZ6, _OffsetX7, _OffsetZ7, _OffsetX8, _OffsetZ8;
 
         struct Input
         {
@@ -44,10 +48,37 @@ Shader "Custom/WaterRippleShader"
         void vert(inout appdata_full v)
         {
             half offsetvert = ((v.vertex.x * v.vertex.x) + (v.vertex.z * v.vertex.z));
-            half value = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert); 
-            v.vertex.y += value;
-            v.normal.x += value; // Video says this should be .y, but .x and .z actually make it work. This makes the ripples visible without texture.
-        }
+            half value1 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX1) + (v.vertex.z * _OffsetZ1));
+            half value2 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX2) + (v.vertex.z * _OffsetZ2));
+            half value3 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX3) + (v.vertex.z * _OffsetZ3));
+            half value4 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX4) + (v.vertex.z * _OffsetZ4));
+            half value5 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX5) + (v.vertex.z * _OffsetZ5));
+            half value6 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX6) + (v.vertex.z * _OffsetZ6));
+            half value7 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX7) + (v.vertex.z * _OffsetZ7));
+            half value8 = _Scale * sin(_Time.w * _Speed * _Frequency + offsetvert + (v.vertex.x * _OffsetX8) + (v.vertex.z * _OffsetZ8));
+            
+            
+            v.vertex.y += value1 * _WaveAmplitude1;
+            v.normal.x += value1 * _WaveAmplitude1;
+            v.vertex.y += value2 * _WaveAmplitude2;
+            v.normal.x += value2 * _WaveAmplitude2;
+            v.vertex.y += value3 * _WaveAmplitude3;
+            v.normal.x += value3 * _WaveAmplitude3;
+            v.vertex.y += value4 * _WaveAmplitude4;
+            v.normal.x += value4 * _WaveAmplitude4;
+            v.vertex.y += value5 * _WaveAmplitude5;
+            v.normal.x += value5 * _WaveAmplitude5;
+            v.vertex.y += value6 * _WaveAmplitude6;
+            v.normal.x += value6 * _WaveAmplitude6;
+            v.vertex.y += value7 * _WaveAmplitude7;
+            v.normal.x += value7 * _WaveAmplitude7;
+            v.vertex.y += value8 * _WaveAmplitude8;
+            v.normal.x += value8 * _WaveAmplitude8;
+            // for(int j = 0; j < _ARR_SIZE; j++){
+            //     v.vertex.y += values[j] * _WaveAmplitudes[j];
+            //     v.normal.x += values[j] * _WaveAmplitudes[j];
+            // }
+        }   
 
         void surf (Input IN, inout SurfaceOutputStandard o)
         {

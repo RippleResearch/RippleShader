@@ -26,10 +26,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Frequency: 0.4
+    - _Frequency: 0.5
     - _Glossiness: 0.5
     - _Metallic: 0
-    - _Scale: 3
+    - _Scale: 0.2
     - _Speed: -5
     m_Colors:
     - _Color: {r: 0.30584726, g: 0.3200516, b: 0.8207547, a: 1}

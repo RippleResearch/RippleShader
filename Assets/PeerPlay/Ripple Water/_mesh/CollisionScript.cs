@@ -1,5 +1,6 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class CollisionScript : MonoBehaviour {
 	private int waveNumber;
@@ -29,7 +30,7 @@ public class CollisionScript : MonoBehaviour {
 				GetComponent<Renderer>().material.SetFloat("_Distance" + (i+1), distance[i]);
 				GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + (i+1), waveAmplitude[i] * 0.98f); // Decreases the wave amplitude by 2% every time it updates so it keeps getting smaller
 			}
-			if (waveAmplitude[i] < 0.01) // If the wave is pretty small, just set it to 0
+			if (waveAmplitude[i] < 0.03) // If the wave is pretty small, just set it to 0
 			{
 				GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + (i+1), 0);
 				distance[i] = 0;
@@ -62,7 +63,7 @@ public class CollisionScript : MonoBehaviour {
 
 			GetComponent<Renderer>().material.SetFloat("_xImpact" + waveNumber, col.transform.position.x);
 			GetComponent<Renderer>().material.SetFloat("_zImpact" + waveNumber, col.transform.position.z);
-
+			// 
 			GetComponent<Renderer>().material.SetFloat("_WaveAmplitude" + waveNumber, col.rigidbody.velocity.magnitude * magnitudeDivider);
 
 		}

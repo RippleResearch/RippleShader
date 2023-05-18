@@ -11,38 +11,38 @@ Shader "Custom/RippleWater" {
 		_Speed ("Speed", float) = 1
 		_Frequency ("Frequency", float) = 1
 	    [HideInInspector]_WaveAmplitude1 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude2 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude3 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude4 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude5 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude6 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude7 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_WaveAmplitude8 ("WaveAmplitude1", float) = 0
-  [HideInInspector]_xImpact1 ("x Impact 1", float) = 0
-  [HideInInspector]_zImpact1 ("z Impact 1", float) = 0
-  [HideInInspector]_xImpact2 ("x Impact 2", float) = 0
-  [HideInInspector]_zImpact2 ("z Impact 2", float) = 0
-  [HideInInspector]_xImpact3 ("x Impact 3", float) = 0
-  [HideInInspector]_zImpact3 ("z Impact 3", float) = 0
-  [HideInInspector]_xImpact4 ("x Impact 4", float) = 0
-  [HideInInspector]_zImpact4 ("z Impact 4", float) = 0
-  [HideInInspector]_xImpact5 ("x Impact 5", float) = 0
-  [HideInInspector]_zImpact5 ("z Impact 5", float) = 0
-  [HideInInspector]_xImpact6 ("x Impact 6", float) = 0
-  [HideInInspector]_zImpact6 ("z Impact 6", float) = 0
-  [HideInInspector]_xImpact7 ("x Impact 7", float) = 0
-  [HideInInspector]_zImpact7 ("z Impact 7", float) = 0
-  [HideInInspector]_xImpact8 ("x Impact 8", float) = 0
-  [HideInInspector]_zImpact8 ("z Impact 8", float) = 0
-  
-  [HideInInspector]_Distance1 ("Distance1", float) = 0
-  [HideInInspector]_Distance2 ("Distance2", float) = 0
-  [HideInInspector]_Distance3 ("Distance3", float) = 0
-  [HideInInspector]_Distance4 ("Distance4", float) = 0
-  [HideInInspector]_Distance5 ("Distance5", float) = 0
-  [HideInInspector]_Distance6 ("Distance6", float) = 0
-  [HideInInspector]_Distance7 ("Distance7", float) = 0
-  [HideInInspector]_Distance8 ("Distance8", float) = 0
+		[HideInInspector]_WaveAmplitude2 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude3 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude4 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude5 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude6 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude7 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_WaveAmplitude8 ("WaveAmplitude1", float) = 0
+		[HideInInspector]_xImpact1 ("x Impact 1", float) = 0
+		[HideInInspector]_zImpact1 ("z Impact 1", float) = 0
+		[HideInInspector]_xImpact2 ("x Impact 2", float) = 0
+		[HideInInspector]_zImpact2 ("z Impact 2", float) = 0
+		[HideInInspector]_xImpact3 ("x Impact 3", float) = 0
+		[HideInInspector]_zImpact3 ("z Impact 3", float) = 0
+		[HideInInspector]_xImpact4 ("x Impact 4", float) = 0
+		[HideInInspector]_zImpact4 ("z Impact 4", float) = 0
+		[HideInInspector]_xImpact5 ("x Impact 5", float) = 0
+		[HideInInspector]_zImpact5 ("z Impact 5", float) = 0
+		[HideInInspector]_xImpact6 ("x Impact 6", float) = 0
+		[HideInInspector]_zImpact6 ("z Impact 6", float) = 0
+		[HideInInspector]_xImpact7 ("x Impact 7", float) = 0
+		[HideInInspector]_zImpact7 ("z Impact 7", float) = 0
+		[HideInInspector]_xImpact8 ("x Impact 8", float) = 0
+		[HideInInspector]_zImpact8 ("z Impact 8", float) = 0
+		
+		[HideInInspector]_Distance1 ("Distance1", float) = 0
+		[HideInInspector]_Distance2 ("Distance2", float) = 0
+		[HideInInspector]_Distance3 ("Distance3", float) = 0
+		[HideInInspector]_Distance4 ("Distance4", float) = 0
+		[HideInInspector]_Distance5 ("Distance5", float) = 0
+		[HideInInspector]_Distance6 ("Distance6", float) = 0
+		[HideInInspector]_Distance7 ("Distance7", float) = 0
+		[HideInInspector]_Distance8 ("Distance8", float) = 0
  
 
 	}
@@ -94,57 +94,57 @@ Shader "Custom/RippleWater" {
 		
 		
 		v.vertex.y += value0; //remove for no waves
-		v.normal.y += value0; //remove for no waves
+		v.normal.x += value0; //remove for no waves
 		o.customValue += value0  ;
 
 		
 		if (sqrt(pow(worldPos.x - _xImpact1, 2) + pow(worldPos.z - _zImpact1, 2)) < _Distance1)
 		{
 		v.vertex.y += value1 * _WaveAmplitude1;
-		v.normal.y += value1 * _WaveAmplitude1;	
+		v.normal.x += value1 * _WaveAmplitude1;	
 		o.customValue += value1 * _WaveAmplitude1;	
 
 		}
 		if (sqrt(pow(worldPos.x - _xImpact2, 2) + pow(worldPos.z - _zImpact2, 2)) < _Distance2)
 		{
 		v.vertex.y += value2 * _WaveAmplitude2;
-		v.normal.y += value2 * _WaveAmplitude2;
+		v.normal.x += value2 * _WaveAmplitude2;
 		o.customValue +=  value2 * _WaveAmplitude2;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact3, 2) + pow(worldPos.z - _zImpact3, 2)) < _Distance3)
 		{
 		v.vertex.y += value3 * _WaveAmplitude3;
-		v.normal.y += value3 * _WaveAmplitude3;
+		v.normal.x += value3 * _WaveAmplitude3;
 		o.customValue += value3 * _WaveAmplitude3;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact4, 2) + pow(worldPos.z - _zImpact4, 2)) < _Distance4)
 		{
 		v.vertex.y += value4 * _WaveAmplitude4;
-		v.normal.y += value4 * _WaveAmplitude4;
+		v.normal.x += value4 * _WaveAmplitude4;
 		o.customValue += value4 * _WaveAmplitude4;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact5, 2) + pow(worldPos.z - _zImpact5, 2)) < _Distance5)
 		{
 		v.vertex.y += value5 * _WaveAmplitude5;
-		v.normal.y += value5 * _WaveAmplitude5;
+		v.normal.x += value5 * _WaveAmplitude5;
 		o.customValue += value5 * _WaveAmplitude5;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact6, 2) + pow(worldPos.z - _zImpact6, 2)) < _Distance6)
 		{
 		v.vertex.y += value6 * _WaveAmplitude6;
-		v.normal.y += value6 * _WaveAmplitude6;
+		v.normal.x += value6 * _WaveAmplitude6;
 		o.customValue += value6 * _WaveAmplitude6;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact7, 2) + pow(worldPos.z - _zImpact7, 2)) < _Distance7)
 		{
 		v.vertex.y += value7 * _WaveAmplitude7;
-		v.normal.y += value7 * _WaveAmplitude7;
+		v.normal.x += value7 * _WaveAmplitude7;
 		o.customValue += value7 * _WaveAmplitude7;
 		}
 		if (sqrt(pow(worldPos.x - _xImpact8, 2) + pow(worldPos.z - _zImpact8, 2)) < _Distance8)
 		{
 		v.vertex.y += value8 * _WaveAmplitude8;
-		v.normal.y += value8 * _WaveAmplitude8;
+		v.normal.x += value8 * _WaveAmplitude8;
 		o.customValue += value8 * _WaveAmplitude8;
 		}
 		

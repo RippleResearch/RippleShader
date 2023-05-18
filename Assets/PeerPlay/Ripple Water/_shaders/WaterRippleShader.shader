@@ -111,21 +111,21 @@ Shader "Custom/WaterRippleShader"
             // v.normal.y += value8 * _WaveAmplitude8;
             
             v.vertex.y += value1 * _WaveAmplitude1;
-            v.normal.z += value1 * _WaveAmplitude1;
+            v.normal.x += value1 * _WaveAmplitude1;
             v.vertex.y += value2 * _WaveAmplitude2;
-            v.normal.z += value2 * _WaveAmplitude2;
+            v.normal.x += value2 * _WaveAmplitude2;
             v.vertex.y += value3 * _WaveAmplitude3;
-            v.normal.z += value3 * _WaveAmplitude3;
+            v.normal.x += value3 * _WaveAmplitude3;
             v.vertex.y += value4 * _WaveAmplitude4;
-            v.normal.z += value4 * _WaveAmplitude4;
+            v.normal.x += value4 * _WaveAmplitude4;
             v.vertex.y += value5 * _WaveAmplitude5;
-            v.normal.z += value5 * _WaveAmplitude5;
+            v.normal.x += value5 * _WaveAmplitude5;
             v.vertex.y += value6 * _WaveAmplitude6;
-            v.normal.z += value6 * _WaveAmplitude6;
+            v.normal.x += value6 * _WaveAmplitude6;
             v.vertex.y += value7 * _WaveAmplitude7;
-            v.normal.z += value7 * _WaveAmplitude7;
+            v.normal.x += value7 * _WaveAmplitude7;
             v.vertex.y += value8 * _WaveAmplitude8;
-            v.normal.z += value8 * _WaveAmplitude8;
+            v.normal.x += value8 * _WaveAmplitude8;
         }   
 
         void surf (Input IN, inout SurfaceOutputStandard o)
